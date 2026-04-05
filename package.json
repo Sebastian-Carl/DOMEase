@@ -1,0 +1,21 @@
+{
+  "name": "domease",
+  "version": "1.0.0",
+  "description": "- [DOM-EASE README](#dom-ease-readme)\r   - [Introduction](#introduction)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sebastian-Carl/DOMEase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sebastian-Carl/DOMEase/issues"
+  },
+  "homepage": "https://github.com/Sebastian-Carl/DOMEase#readme"
+}
