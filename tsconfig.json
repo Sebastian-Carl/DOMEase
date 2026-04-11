@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "lib": ["DOM", "ESNext"],
+        "allowJs": true,
+        "strict": true,
+        "noEmit": true,
+    },
+    "include": ["src", "src/types/**/*.d.ts", "index.js", "src/types"]
+}

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "- [DOM-EASE README](#dom-ease-readme)\r   - [Introduction](#introduction)",
   "main": "index.js",
+  "types": "./src/types/global.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/Sebastian-Carl/DOMEase.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": ["dom", "js-utils", "domease", "ease"],
+  "author": "Carl Sebastian",
+  "license": "Apache-2.0",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Sebastian-Carl/DOMEase/issues"
   },
