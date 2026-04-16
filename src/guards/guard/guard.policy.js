@@ -1,8 +1,8 @@
 import { __getConfig } from '../../config/config.js';
-import __setGlobal from '../../internal/internal.global-registry.js';
+import __setGlobal from '../../internal/global-registry.js';
 
 /**
- *  Checks if the **`GlobalConfigurationVerbose`** is enabled.
+ *  Checks if the **`GlobalVerboseConfiguration`** is enabled.
  *  @returns { boolean }
  */
 export function isVerbose() {
@@ -10,7 +10,7 @@ export function isVerbose() {
 }
 
 /**
- *  Checks if the **`GlobalConfigurationStrict`** is enabled.
+ *  Checks if the **`GlobalStrictConfiguration`** is enabled.
  *
  *  @returns { boolean }
  */
@@ -19,7 +19,7 @@ export function isStrict() {
 }
 
 /**
- *  Checks if the **`GlobalConfigurationMode`** for the environment is set to **`Development`**.
+ *  Checks if the **`GlobalModeConfiguration`** for the environment is set to **`Development`**.
  *
  *  @returns { boolean }
  */
@@ -28,7 +28,7 @@ export function isDevMode() {
 }
 
 /**
- *  Checks if the **`GlobalConfigurationMode`** for the environment is set to **`Production`**.
+ *  Checks if the **`GlobalModeConfiguration`** for the environment is set to **`Production`**.
  *
  *  @returns { boolean }
  */
@@ -36,9 +36,18 @@ export function isProdMode() {
     return __getConfig('mode') === 'prod';
 }
 
+/**
+ *  Checks if the **`GlobalDiagnosticConfiguration`** is enabled.
+ *
+ *  @returns { boolean }
+ */
+export function isDiagnosticEnabled() {
+    return __getConfig('diagnostic').enable;
+}
+
 // #: Global Entry
 const ENTRIES = [
-    isDevMode, isProdMode, isStrict, isVerbose
+    isDevMode, isDiagnosticEnabled, isProdMode, isStrict, isVerbose
 ];
 for (const ENTRY of ENTRIES) {
     __setGlobal(ENTRY.name, ENTRY, { writable: false });

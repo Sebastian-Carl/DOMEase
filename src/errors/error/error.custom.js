@@ -1,7 +1,8 @@
-import __setGlobal from '../../internal/internal.global-registry.js'
+import __setGlobal from '../../internal/global-registry.js'
 import { isUndefined } from '../../guards/guard/guard.undefined.js';
 import { isStr } from '../../guards/guard/guard.string.js';
 import { isPObj } from '../../guards/guard/guard.object.js';
+import { dateNow } from '../../date/date.js'
 
 /**
  *  A custom error class object for custom errors.
@@ -24,7 +25,7 @@ export default class CustomError extends Error {
     message;
     /**
      *  The **`Date`** and **`Time`** stamp of the error occurrence.
-     *  @type { string }
+     *  @type { number }
      */
     timestamp;
     /**
@@ -72,7 +73,7 @@ export default class CustomError extends Error {
         this.context = options?.context ?? "<NO_DATA_PROVIDED>";
         this.message = message ?? "<EMPTY_MESSAGE>";
         this.name = options?.customName ?? this?.constructor.name;
-        this.timestamp = new Date().toISOString();
+        this.timestamp = dateNow();
     }
 }
 

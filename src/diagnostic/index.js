@@ -1,5 +1,5 @@
-const BASE = "./", EXTENSION = ".js", FILES = [
-    'emit', 'global-registry'
+const BASE = './', EXTENSION = '.js', FILES = [
+    'buffer', 'init', 'service'
 ].map(FILE_NAME => BASE + FILE_NAME + EXTENSION);
 
 for (const FILE of FILES) {

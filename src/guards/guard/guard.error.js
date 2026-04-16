@@ -1,4 +1,4 @@
-import __setGlobal from '../../internal/internal.global-registry.js'
+import __setGlobal from '../../internal/global-registry.js'
 import { isFunc } from './guard.function.js';
 
 /**

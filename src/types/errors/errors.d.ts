@@ -20,7 +20,7 @@ declare global {
         /**
          *  The **`Date`** and **`Time`** stamp of the error occurrence.
          */
-        timestamp: string;
+        timestamp: number;
         /**
          *  Constructs the message data of the error.
          */

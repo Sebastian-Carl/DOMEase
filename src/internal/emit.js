@@ -1,4 +1,4 @@
-import __setGlobal from './internal.global-registry.js'
+import __setGlobal from './global-registry.js'
 import { isErr } from '../guards/guard/guard.error.js';
 
 /**

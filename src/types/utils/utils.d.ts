@@ -7,7 +7,7 @@ declare global {
      *  @param val - The target value.
      *  @returns The retrieved **`constructor`** name of value.
      */
-    function getConstructorOf(val: unknown): string | undefined;
+    function constructorOf(val: unknown): string | undefined;
 
     /**
      *  Returns the **`type`** of the specified value.

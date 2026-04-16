@@ -1,9 +1,9 @@
-import __setGlobal from '../../internal/internal.global-registry.js'
+import __setGlobal from '../../internal/global-registry.js'
 import { isNull } from './guard.null.js';
 import { isNum } from './guard.number.js';
 import { isObj } from './guard.object.js';
 import { isStr } from './guard.string.js';
-import { isPrototypeOf } from './guard.isPrototypeOf.js';
+import { isProtoOf } from './guard.proto.js';
 
 /**
  *  Checks if the specified argument is **`Node`**.
@@ -152,7 +152,7 @@ export function isElementNode(node) {
  *  @returns { node is HTMLElement }
  */
 export function isHTMLElement(element) {
-    return isElementNode(element) && isPrototypeOf(element, HTMLElement);
+    return isElementNode(element) && isProtoOf(element, HTMLElement);
 }
 
 /**
@@ -163,7 +163,7 @@ export function isHTMLElement(element) {
  *  @returns { node is SVGElement }
  */
 export function isSVGElement(element) {
-    return isElementNode(element) && isPrototypeOf(element, SVGElement);
+    return isElementNode(element) && isProtoOf(element, SVGElement);
 }
 
 /**
@@ -174,7 +174,7 @@ export function isSVGElement(element) {
  *  @returns { node is MathMLElement }
  */
 export function isMathElement(element) {
-    return isElementNode(element) && isPrototypeOf(element, MathMLElement);
+    return isElementNode(element) && isProtoOf(element, MathMLElement);
 }
 
 /**

@@ -2,18 +2,19 @@ import CONFIG from './config.json' with { type: 'json' };
 import { hasProperty, isEmptyPObj, isPObj } from '../guards/guard/guard.object.js';
 import { isEmptyStr, isStr } from '../guards/guard/guard.string.js';
 import { isUndefined } from '../guards/guard/guard.undefined.js';
-import __emit from '../internal/internal.emit.js';
+import __emit from '../internal/emit.js';
 import ArgumentError from '../errors/error/error.argument.js';
 import EmptyDataError from '../errors/error/error.empty_data.js';
 import NoSuchKeyError from '../errors/error/error.no_such_key.js';
-import getConstructorOf from '../get/get.constructor.js';
-import getTypeOf from '../get/get.typeOf.js';
-import __setGlobal from '../internal/internal.global-registry.js'
+import constructorOf from '../utils/util/constructorOf.js';
+import getTypeOf from '../utils/util/getTypeOf.js';
+import __setGlobal from '../internal/global-registry.js'
+import { DefaultGlobalConfiguration } from './default.js'
 
 /**
- *  @param { import('../types/types.js').GlobalConfig } conf
+ *  @param { import('../types/types.js').GlobalConfiguration } conf
  */
-export default function __setConfig(conf) {
+export function __setConfig(conf) {
     const CONF = conf;
 
     if (!isPObj(CONF)) {
@@ -40,7 +41,7 @@ export default function __setConfig(conf) {
         }
 
         const [O_TYPE, C_TYPE] = [CONFIG[PK], PV].map(V =>
-            getConstructorOf(V) ?? getTypeOf(V)
+            constructorOf(V) ?? getTypeOf(V)
         );
 
         if (C_TYPE !== O_TYPE) {
@@ -51,19 +52,34 @@ export default function __setConfig(conf) {
             });
         }
 
+        if (isPObj(CONFIG[PK])) {
+            const ORIG_KEYS = Object.keys(CONFIG[PK]);
+
+            CONFIG[PK] = ORIG_KEYS.reduce((acc, origKey) => {
+                if (!hasProperty(PV, origKey))
+                    acc[origKey] = DefaultGlobalConfiguration[PK][origKey];
+                else
+                    acc[origKey] = PV[origKey];
+
+                return acc;
+            }, {});
+
+            continue;
+        }
+
         CONFIG[PK] = PV;
     }
 }
 
 /**
  *  @overload
- *  @returns { import('../types/types.js').GlobalConfig }
+ *  @returns { import('../types/types.js').GlobalConfiguration }
  */
 /**
- *  @template { keyof import('../types/types.js').GlobalConfig } K
+ *  @template { keyof import('../types/types.js').GlobalConfiguration } K
  *  @overload
  *  @param { K } key
- *  @returns { K extends keyof import('../types/types.js').GlobalConfig ? import('../types/types.js').GlobalConfig[K] : undefined }
+ *  @returns { K extends keyof import('../types/types.js').GlobalConfiguration ? import('../types/types.js').GlobalConfiguration[K] : undefined }
  */
 export function __getConfig(key) {
     const KEY = key;
@@ -76,7 +92,7 @@ export function __getConfig(key) {
         __emit(ArgumentError, 'Cannot retrieve configuration data with a non-string format for configuration access key.', {
             expected_args: 'String',
             cause: { target: 'key', data: KEY },
-            context: `(@InvalidType: key: ${getConstructorOf(KEY) ?? getTypeOf(KEY)})`
+            context: `(@InvalidType: key: ${constructorOf(KEY) ?? getTypeOf(KEY)})`
         });
     }
 

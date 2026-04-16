@@ -1,5 +1,5 @@
 import { isVerbose } from '../guards/guard/guard.policy.js';
-import __setGlobal from '../internal/internal.global-registry.js'
+import __setGlobal from '../internal/global-registry.js'
 
 /**
  *  Writes a **`console`** event message at **`critical`** level.

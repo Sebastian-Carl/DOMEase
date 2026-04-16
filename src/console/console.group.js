@@ -1,4 +1,4 @@
-import __setGlobal from '../internal/internal.global-registry.js'
+import __setGlobal from '../internal/global-registry.js'
 import { isVerbose } from '../guards/guard/guard.policy.js';
 import { isArr } from '../guards/guard/guard.array.js';
 

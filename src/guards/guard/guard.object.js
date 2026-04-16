@@ -1,5 +1,5 @@
-import __setGlobal from '../../internal/internal.global-registry.js';
-import { isStr } from './guard.string.js';
+import __setGlobal from '../../internal/global-registry.js';
+import { isEmptyStr, isStr } from './guard.string.js';
 
 /**
  *  Checks if the specified argument is **`object`**.
@@ -45,7 +45,7 @@ export function isEmptyPObj(obj) {
  *  @returns { boolean }
  */
 export function hasProperty(obj, prop) {
-    if (!isPObj(obj) || isEmptyPObj(obj) || !isStr(prop)) {
+    if (!isObj(obj) || isEmptyPObj(obj) || !isStr(prop) || isEmptyStr(prop)) {
         return false;
     }
 

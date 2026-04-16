@@ -112,7 +112,15 @@ export type GlobalRegistryOptions = {
 }
 
 // #: Global Configuration
-export type GlobalConfig = {
+export type GlobalConfiguration = {
+    /**
+     *  Diagnostic event policy.
+     */
+    diagnostic: {
+        enable: boolean;
+        size: number;
+        visibility: 'always' | 'dev-only'
+    };
     /**
      *  Environment mode.
      *

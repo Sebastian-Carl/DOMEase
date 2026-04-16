@@ -7,9 +7,9 @@ import { isUndefined } from '../guards/guard/guard.undefined.js';
 import ArgumentError from '../errors/error/error.argument.js';
 import EmptyDataError from '../errors/error/error.empty_data.js';
 import DuplicateEntryError from '../errors/error/error.duplicate_entry.js';
-import __emit from './internal.emit.js';
-import getConstructorOf from '../get/get.constructor.js';
-import getTypeOf from '../get/get.typeOf.js';
+import __emit from './emit.js';
+import constructorOf from '../utils/util/constructorOf.js';
+import getTypeOf from '../utils/util/getTypeOf.js';
 import warn from '../console/console.warn.js';
 
 /**
@@ -21,7 +21,7 @@ export default function __setGlobal(key, data, options) {
     const KEY = key, DATA = data, OPTIONS = options;
 
     if (!isStr(KEY)) {
-        const KEY_TYPE = getConstructorOf(KEY) ?? getTypeOf(KEY);
+        const KEY_TYPE = constructorOf(KEY) ?? getTypeOf(KEY);
         __emit(ArgumentError, 'Expects an access key of an object for global registration in string format!', {
             cause: { target: 'key', data: KEY },
             context: `(@InvalidArgument: key: ${KEY_TYPE})`,
@@ -37,7 +37,7 @@ export default function __setGlobal(key, data, options) {
     }
 
     if (!isUndefined(OPTIONS) && !isPObj(OPTIONS)) {
-        const OPTIONS_TYPE = getConstructorOf(OPTIONS) ?? getTypeOf(OPTIONS);
+        const OPTIONS_TYPE = constructorOf(OPTIONS) ?? getTypeOf(OPTIONS);
         __emit(ArgumentError, 'Only accepts options in Object ({}) format!', {
             cause: { target: 'options', data: OPTIONS },
             context: `(@InvalidArgument: options: ${OPTIONS_TYPE})`,

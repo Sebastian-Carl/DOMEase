@@ -361,32 +361,39 @@ declare global {
      */
 
     /**
-     *  Checks if the **`GlobalConfigurationPolicy`** property **`verbose`** is enabled.
+     *  Checks if the **`GlobalVerboseConfiguration`** policy is enabled.
      *
-     *  @returns The state of **`GlobalConfigurationPolicy`** property **`verbose`**.
+     *  @returns The state of **`GlobalVerboseConfiguration`** policy.
      */
     function isVerbose(): GlobalConfig['verbose'];
 
     /**
-     *  Checks if the **`GlobalConfigurationPolicy`** property **`strict`** is enabled.
+     *  Checks if the **`GlobalStrictConfiguration`** policy is enabled.
      *
-     *  @returns The state of **`GlobalConfigurationPolicy`** property **`strict`**.
+     *  @returns The state of **`GlobalStrictConfiguration`** policy.
      */
     function isStrict(): GlobalConfig['strict'];
 
     /**
-     *  Checks if the **`GlobalConfigurationPolicy`** property **`mode`** is set to **`dev`**.
+     *  Checks if the **`GlobalModeConfiguration`** policy is set to **`dev`**.
      *
-     *  @returns The validated **`mode`** of **`GlobalConfigurationPolicy`** property **`mode`**.
+     *  @returns The validated **`GlobalModeConfiguration`** policy mode.
      */
     function isDevMode(): boolean;
 
     /**
-     *  Checks if the **`GlobalConfigurationPolicy`** property **`mode`** is set to **`prod`**.
+     *  Checks if the **`GlobalModeConfiguration`** policy is set to **`prod`**.
      *
-     *  @returns The validated **`mode`** of **`GlobalConfigurationPolicy`** property **`mode`**.
+     *  @returns The validated of **`GlobalModeConfiguration`** mode.
      */
     function isProdMode(): boolean;
+
+    /**
+     *  Checks if the **`GlobalDiagnosticConfiguration`** policy is enabled.
+     *
+     *  @returns The state of **`GlobalDiagnosticConfiguration`** policy.
+     */
+    function isDiagnosticEnabled(): boolean;
 
     /**
      *  +-------------------------------------------------+

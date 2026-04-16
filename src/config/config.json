@@ -1,4 +1,9 @@
 {
+    "diagnostic": {
+        "enable": true,
+        "size": 50,
+        "visibility": "always"
+    },
     "mode": "dev",
     "strict": false,
     "verbose": true
